@@ -2,22 +2,24 @@ package edu.kh.op.practice;
 
 import java.util.Scanner;
 
-class Student {
-	String name;
-	int grade;
-	int classNum;
-	int id;
-	String gender;
-	double score;
-}
-
-class Subject {
-	int koreanScore;
-	int englishScore;
-	int mathScore;
-}
-
 public class OperatorPractice {
+	
+	private class Student {
+		String name;
+		int grade;
+		int classNum;
+		int id;
+		String gender;
+		double score;
+	}
+
+	private class Subject {
+		int koreanScore;
+		int englishScore;
+		int mathScore;
+	}
+	
+	Scanner sc = new Scanner(System.in);
 	
 	public void practice1() {
 		// 모든 사람이 사탕을 골고루 나눠가지려고 한다. 인원 수와 사탕 개수를 키보드로 입력 받고
@@ -27,8 +29,6 @@ public class OperatorPractice {
 		int candy;
 		int sharedCandy;
 		int leftCandy;
-		
-		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("인원 수: ");
 		person = sc.nextInt();
@@ -46,7 +46,6 @@ public class OperatorPractice {
 		// 키보드로 입력 받은 값들을 변수에 기록하고 저장된 변수 값을 화면에 출력하여 확인하세요.
 		
 		Student std = new Student();
-		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("이름 : ");
 		std.name = sc.next();
@@ -75,7 +74,6 @@ public class OperatorPractice {
 		// 세 과목에 대한 합계(국어+영어+수학)와 평균(합계/3.0)을 구하세요.
 		
 		Subject sub = new Subject();
-		Scanner sc = new Scanner(System.in);
 		
 		int total;
 		double average;

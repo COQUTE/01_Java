@@ -10,9 +10,9 @@ public class OperatorPractice2 {
 	 * 입력받은 값이 65세 이상이거나, 12세 이하면 "노인이거나 어린이 입니까? true" 출력 아니면 false 출력
 	 */
 	
+	Scanner sc = new Scanner(System.in);
+	
 	public void practice1() {
-		
-		Scanner sc = new Scanner(System.in);
 		
 		int age;
 		String result;
