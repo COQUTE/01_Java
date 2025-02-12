@@ -14,7 +14,9 @@ public class ExampleRun {
 		// import 하지 않아도 자유롭게 불러다 쓸 수 있다!
 		
 		opEx.ex1(); // opEx가 가지고 있는 기능(메서드) 중 ex1 이름의 메서드를 호출(실행)
-		
+		opEx.ex2();
+		opEx.ex3();
+		opEx.ex4();
 	}
 
 }
