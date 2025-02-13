@@ -17,6 +17,19 @@ public class OperatorPractice {
 		int koreanScore;
 		int englishScore;
 		int mathScore;
+		
+		public String isPassed(int[] scoreArray, double average) {
+			boolean isPass = true;
+			
+			for (int i = 0; i < 3; i++) {
+				
+				isPass &= scoreArray[i] >= 40;
+			}
+			
+			isPass &= (average >= 60);
+			
+			return isPass ? "합격" : "불합격";
+		}
 	}
 	
 	Scanner sc = new Scanner(System.in);
@@ -30,16 +43,17 @@ public class OperatorPractice {
 		int sharedCandy;
 		int leftCandy;
 		
-		System.out.print("인원 수: ");
+		System.out.print("인원 수 : ");
 		person = sc.nextInt();
 		
-		System.out.print("사탕 개수: ");
+		System.out.print("사탕 개수 : ");
 		candy = sc.nextInt();
 		
 		sharedCandy = candy / person;
 		leftCandy = candy % person;
 		
-		System.out.printf("나눠가진 사탕 개수: %d\n남은 사탕 개수: %d\n", sharedCandy, leftCandy);
+		System.out.printf("1인당 사탕 개수 : %d\n", sharedCandy);
+		System.out.printf("남는 사탕 개수 : %d\n", leftCandy);
 	}
 	
 	public void practice2() {
@@ -59,7 +73,7 @@ public class OperatorPractice {
 		System.out.print("번호(정수만) : ");
 		std.id = sc.nextInt();
 
-		System.out.print("성별(남학생/여학생 : ");
+		System.out.print("성별(남학생/여학생) : ");
 		std.gender = sc.next();
 
 		System.out.print("성적(소수점 아래 둘째 자리까지) : ");
@@ -75,6 +89,7 @@ public class OperatorPractice {
 		
 		Subject sub = new Subject();
 		
+		int[] scoreArray;
 		int total;
 		double average;
 		
@@ -87,10 +102,22 @@ public class OperatorPractice {
 		System.out.print("국어 : ");
 		sub.mathScore = sc.nextInt();
 		
-		total = sub.koreanScore + sub.englishScore + sub.mathScore;
-		System.out.println("합계 : " + total);
+		scoreArray = new int[] { sub.koreanScore, sub.englishScore, sub.mathScore };
+		
+		total = 0;
+		for (int i = 0; i < 3; i++) {
+			
+			total += scoreArray[i];
+		}
 		
 		average = total / 3.0;
-		System.out.println("평균 : " + average);
+		
+		System.out.println("합계 : " + total);
+		System.out.printf("평균 : %.1f\n", average);
+		
+		// 각 과목이 40점 이상, 평균 60점 이상이어야 합격
+		// 그 외 불합격 출력
+		
+		System.out.println(sub.isPassed(scoreArray, average));
 	}
 }
