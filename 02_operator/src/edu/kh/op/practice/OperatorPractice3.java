@@ -13,17 +13,21 @@ public class OperatorPractice3 {
 		 */
 		
 		boolean isMember;
-		int totalCost;
-		double finalCost;
+		double discountRate;
+		int totalPrice;
+		double finalPrice;
 		
 		System.out.print("가격을 입력하세요 : ");
-		totalCost = sc.nextInt();
+		totalPrice = sc.nextInt();
 		
 		System.out.print("멤버십 있으세요? (있으면 true / 없으면 false 입력) : ");
 		isMember = sc.nextBoolean();
 		
-		finalCost = isMember ? (totalCost * 9 / 10) : (totalCost * 95 / 100);
-		System.out.printf("할인을 포함한 최종 금액 : %.1f원\n", finalCost);
+		discountRate = isMember ? 0.10 : 0.05;
+		
+		
+		finalPrice = totalPrice * (1 - discountRate);
+		System.out.printf("할인을 포함한 최종 금액 : %.1f원\n", finalPrice);
 	}
 	
 	public void practice2() {
@@ -36,7 +40,7 @@ public class OperatorPractice3 {
 		System.out.print("출금할 금액 입력 : ");
 		money = sc.nextInt();
 		
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < bill.length; i++) {
 			
 			System.out.printf("%d원: %d\n", bill[i], money / bill[i]);
 			money %= bill[i];
@@ -52,6 +56,7 @@ public class OperatorPractice3 {
 		
 		int num1;
 		int num2;
+		String result;
 		
 		System.out.print("첫 번째 수 : ");
 		num1 = sc.nextInt();
@@ -59,7 +64,11 @@ public class OperatorPractice3 {
 		System.out.print("두 번째 수 : ");
 		num2 = sc.nextInt();
 		
-		String result = (num1 % num2) == 0 ? "배수입니다" : "배수가 아닙니다";
+		// 첫번째 수가 두번째 수의 배수인지
+		// == 첫번째 수가 두번째 수로 나누어 떨어진다는 뜻
+		// == 첫번째를 두번째로 나누었을 때 나머지가 0이다
+		
+		result = (num1 % num2 == 0) ? "배수입니다" : "배수가 아닙니다";
 		
 		System.out.println(result);
 	}

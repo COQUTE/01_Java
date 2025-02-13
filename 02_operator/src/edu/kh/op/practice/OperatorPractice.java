@@ -21,7 +21,7 @@ public class OperatorPractice {
 		public String isPassed(int[] scoreArray, double average) {
 			boolean isPass = true;
 			
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < scoreArray.length; i++) {
 				
 				isPass &= scoreArray[i] >= 40;
 			}
