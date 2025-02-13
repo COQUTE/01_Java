@@ -258,7 +258,6 @@ public class ConditionExample { // 기능 제공용 클래스
 		System.out.println(result);
 	}
 		
-	
 	public void ex8() {
 		
 		// 놀이기구 탑승 제한 검사 프로그램
@@ -306,31 +305,84 @@ public class ConditionExample { // 기능 제공용 클래스
 		if (age < 0 || age > 100) {
 			result = "나이를 잘못 입력하셨습니다.";
 			
-		} else {
+		} else { // 나이를 0~100 범위로 잘 입력한 경우
 			System.out.print("키 입력 : ");
 			height = sc.nextInt();
 			
 			if (height < 0 || height > 250.0) {
 				result = "키를 잘못 입력하셨습니다.";
 				
-			} else {
-				if (age < 12 && height < 140.0) {
+			} else if (age < 12 && height < 140.0) { // 나이 X, 키 X
 					result = "나이와 키 모두 적절치 않음";
 					
-				} else {
-					if (age < 12) {
-						result = "키는 적절하나, 나이가 적절치 않음";
-						
-					} else if (height < 140.0) {
-						result = "나이는 적절하나, 키는 적절치 않음";
-						
-					} else {
-						result = "탑승가능!!!";
-					}
-				}
+			} else if (age < 12) { // 나이 X, 키 O
+					result = "키는 적절하나, 나이가 적절치 않음";
+					
+			} else if (height < 140.0) { // 나이 O, 키 X
+					result = "나이는 적절하나, 키는 적절치 않음";
+					
+			} else { // 나이 O, 키 O
+					result = "탑승가능!!!";
 			}
 		}
 		
 		System.out.println(result);
+	}
+
+	public void ex9() {
+		
+		// switch문
+		// 여러 case 중 하나를 선택하여 수행하는 조건문
+		
+		// 요일 번호 입력 (1 ~ 7) : 3
+		// 수요일
+		
+		System.out.print("요일 번호 입력 : ");
+		int day = sc.nextInt();
+		
+		switch (day) {
+		
+		case 1:
+			System.out.println("월요일");
+			break;
+		case 2:
+			System.out.println("화요일");
+			break;
+		case 3:
+			System.out.println("수요일");
+			break;
+		case 4:
+			System.out.println("목요일");
+			break;
+		case 5:
+			System.out.println("금요일");
+		case 6:
+			System.out.println("토요일");
+			break;
+		case 7:
+			System.out.println("일요일");
+			break;
+		default:
+			System.out.println("잘못된 입력이다");		
+		}
+	}
+	
+	public void ex10() {
+		
+		// 점수 입력 (0~100) : 85 
+		// 학점 B
+		
+		System.out.print("점수입력(0~100) : ");
+		// 점수범위 벗어난 건 생각 X
+		int score = sc.nextInt();
+		
+		switch(score / 10) { // 점수를 10으로 나눈 몫을 기준으로 학점 구분
+		case 10:
+		case 9: System.out.println("학점 : A"); break;
+		case 8: System.out.println("학점 : B"); break;
+		case 7: System.out.println("학점 : C"); break;
+		case 6: System.out.println("학점 : D"); break;
+		default: System.out.println("학점 : F"); break;
+		}
 	}
 }

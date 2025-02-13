@@ -13,7 +13,9 @@ public class ConditionRun { // 실행용 클래스
 //		condition.ex5();
 //		condition.ex6();
 //		condition.ex7();
-		condition.ex8();
+//		condition.ex8();
+//		condition.ex9();
+		condition.ex10();
 		
 	}
 
