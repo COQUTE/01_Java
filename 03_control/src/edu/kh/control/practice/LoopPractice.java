@@ -218,6 +218,25 @@ public class LoopPractice {
 		 * *
 		 */
 		
+//		System.out.print("정수 입력 : ");
+//		int input = sc.nextInt();
+//		
+//		for (int i = 1; i <= input * 2 - 1; i++) {
+//			int star = input;
+//			
+//			if (i < input) {
+//				star -= input - i;
+//			} else if (i > input) {
+//				star -= i - input;
+//			}
+//			
+//			for (int j = 1; j <= star; j++) {
+//				System.out.print("*");
+//			}
+//			
+//			System.out.println();
+//		}
+		
 		System.out.print("정수 입력 : ");
 		int input = sc.nextInt();
 		
@@ -238,7 +257,6 @@ public class LoopPractice {
 		
 			System.out.println();
 		}
-		
 	}
 	
 	public void practice11() {
