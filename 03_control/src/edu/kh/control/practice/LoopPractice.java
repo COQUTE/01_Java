@@ -142,18 +142,21 @@ public class LoopPractice {
 		 * **
 		 * ***
 		 * ****
+		 * 
+		 * - 행(row)은 입력한 input 만큼
+		 * - 열(col)은 현재행(row)만큼 반복
 		 */
 		
 		System.out.print("정수 입력 : ");
 		int input = sc.nextInt();
 		
-		for (int i = 1; i <= input; i++) {
+		for (int row = 1; row <= input; row++) {
 			
-			for (int j = 1; j <= i; j++) {
+			for (int col = 1; col <= row; col++) {
 				System.out.print("*");
 			}
 			
-			System.out.println();
+			System.out.println(); // 한 행의 모든 열 출력이 끝나면 줄바꿈
 		}
 	}
 	
