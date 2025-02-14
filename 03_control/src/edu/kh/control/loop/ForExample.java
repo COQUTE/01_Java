@@ -168,4 +168,22 @@ public class ForExample { // 기능 제공용 클래스
 			System.out.println();
 		}
 	}
+	
+	public void ex9() {
+		
+		// 구구단 모두 역순 출력하기!
+		// 9 -> 2단까지 역방향
+		// 곱해지는 수는 1 -> 9까지 정방향
+		
+		for (int dan = 9; dan >= 1; dan--) {
+			
+			for (int num = 1; num <= 9; num++) {
+				System.out.printf("%d X %d = %2d ", dan, num, dan * num);
+			}
+			
+			System.out.println();
+		}
+	}
+	
+	
 }
