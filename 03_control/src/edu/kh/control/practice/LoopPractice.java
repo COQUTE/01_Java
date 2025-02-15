@@ -273,24 +273,40 @@ public class LoopPractice {
 		 */
 		
 		
+//		System.out.print("정수 입력 : ");
+//		int input = sc.nextInt();
+//		
+//		int star = 1;
+//		int space = (input * 2 - 1) / 2;
+//		
+//		for (int i = 1; i <= input; i++) {
+//			
+//			for (int j = 1; j <= space; j++) {
+//				System.out.print(" ");
+//			}
+//			
+//			for (int j = 1; j <= star; j++) {
+//				System.out.print("*");
+//			}
+//			
+//			space -= 1;
+//			star += 2;
+//			System.out.println();
+//		}
+		
 		System.out.print("정수 입력 : ");
 		int input = sc.nextInt();
 		
-		int star = 1;
-		int space = (input * 2 - 1) / 2;
-		
-		for (int i = 1; i <= input; i++) {
+		for (int row = 1; row <= input; row++) {
 			
-			for (int j = 1; j <= space; j++) {
+			for (int space = 1; space <= input - row; space++) {
 				System.out.print(" ");
 			}
 			
-			for (int j = 1; j <= star; j++) {
+			for (int col = 1; col <= (row * 2) - 1; col++) {
 				System.out.print("*");
 			}
 			
-			space -= 1;
-			star += 2;
 			System.out.println();
 		}
 	}
