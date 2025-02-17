@@ -282,4 +282,38 @@ public class ArrayExample1 {
 		if (!flag)
 			System.out.println("존재하지 않음");
 	}
+
+	public void ex7() {
+		// 입력받은 값과 일치하는 값이 있으면 인덱스번호 출력
+		// 없으면 "존재하지 않음" 출력
+		
+		String[] arr = {"사과", "딸기", "바나나", "키위", "멜론", "아보카도"};
+		
+		/*
+		 * 과일 입력 : 아보카도
+		 * 5번 인덱스에 존재
+		 * 
+		 * 과일 입력 : 수박
+		 * 존재하지 않음
+		 */
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("과일 입력 : ");
+		String input = sc.next();
+		
+		boolean flag = false;
+		
+		for (int i = 0; i < arr.length; i++) {
+			
+			if (arr[i].equals(input)) {
+				System.out.println(i + "번 인덱스에 존재");
+				flag = true;
+				break;
+			}
+		}
+		
+		if (!flag)
+			System.out.println("존재하지 않음");
+	}
 }
