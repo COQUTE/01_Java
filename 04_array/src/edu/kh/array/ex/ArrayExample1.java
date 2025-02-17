@@ -348,4 +348,79 @@ public class ArrayExample1 {
 		System.out.println(System.identityHashCode(strArr2[0]));
 		// 동일한 String 상수 풀에 존재함!
 	}
+
+	public void ex9() {
+		// 1. 문자열을 입력받아 한 글자씩 잘라내어 char 배열에 순서대로 저장
+		// 2. 문자 하나를 입력받아 일치하는 문자가 char 배열에 몇개 존재하는지 확인
+		// 3. 단, 일치하는 문자 없을 경우 "존재하지 않습니다" 출력
+		
+		/*
+		 * ex)
+		 * 
+		 * 문자열 입력 : hello
+		 * [h, e, l, l, o]
+		 * 검색할 문자 입력 : l
+		 * 2개 있음 / 존재하지 않습니다
+		 * 
+		 */
+		
+		// 사용해야 하는 기술, 기능
+		// 1) 배열 검색
+		// 2) 문자열의 길이 구하기 : String.length()
+		// ex) "hello".length() -> 5
+		
+		// 3) String.charAt(index) : 문자열에서 특정 index에 위치한 문자 하나를 얻어옴.
+		// ex) "hello".charAt(1) -> 'e'
+		
+		// 4) count (숫자세기)
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("문자열 입력 : ");
+		String input = sc.nextLine(); // hello world [h,e,l,l,o, ,w,o,r,l,d]
+		
+		// 1. 입력받은 문자열을 한글자씩 잘라내어 char 배열에 순서대로 저장
+		char[] arr = new char[input.length()];
+		
+		for (int i = 0; i < input.length(); i++) {
+			
+			arr[i] = input.charAt(i); // hello
+			// arr[0] = 'h';
+			// arr[1] = 'e';
+			// arr[2] = 'l';
+			// arr[3] = 'l';
+			// arr[4] = 'o';
+		}
+		
+		System.out.println(Arrays.toString(arr));
+		
+		// 2. 문자 하나를 입력받아 일치하는 문자가 char 배열에 몇개 존재하는지 확인
+		System.out.print("검색할 문자 입력 : ");
+		char ch = sc.next().charAt(0);
+		// sc.next() -> String형
+		// String.charAt(0) -> String의 0번째 인덱스 문자 하나를 추출해서 char 형태로 반환
+		// "h" -> 'h'
+		
+		int count = 0; // 같은 글자 개수를 세기 위한 변수
+		
+		// [h, e, l, l, o] -> 5
+		for (int i = 0; i < arr.length; i++) {
+			
+			if (arr[i] == ch) {
+				count++;
+				// arr[i] 값과 검색할 문자 ch가 같은 경우
+				// 카운트를 늘려라!
+			}
+		}
+		
+		// 결과 출력
+		if (count > 0) { // 일치하는 값 있음
+			
+			System.out.println(count + "개 있음");
+		} else { // 일치하는 문자가 없음
+			
+			// 3. 단, 일치하는 문자 없을 경우 "존재하지 않음" 출력
+			System.out.println("존재하지 않습니다");
+		}
+	}
 }
