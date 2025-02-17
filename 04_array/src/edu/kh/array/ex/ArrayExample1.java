@@ -302,18 +302,50 @@ public class ArrayExample1 {
 		System.out.print("과일 입력 : ");
 		String input = sc.next();
 		
-		boolean flag = false;
+		boolean flag = true;
 		
 		for (int i = 0; i < arr.length; i++) {
 			
-			if (arr[i].equals(input)) {
+			if (arr[i].equals(input)) { // String 비교시 equals() 사용!
 				System.out.println(i + "번 인덱스에 존재");
-				flag = true;
+				flag = false;
 				break;
 			}
 		}
 		
-		if (!flag)
+		if (flag)
 			System.out.println("존재하지 않음");
+	}
+
+	public void ex8() {
+		
+		// String 참조형
+		
+		String str = "가나다"; // String Constant Pool 저장
+		String str2 = new String("가나다"); // Heap 새 객체 저장
+		
+		System.out.println(str); // 주소값?
+		System.out.println(str2);
+		System.out.println(str.toString());
+		
+		// String 클래스의 toString() 메서드가 존재
+		// toString() 메서드는 자기 자신을 그대로 반환.
+		
+		// System.out.println(str);을 실행하면
+		// str.toString()이 자동으로 호출됨
+		// 대입해둔 문자열 갑 자체가 반환됨..
+		
+		// 주소값(객체의 해시코드)을 확인하고 싶다면 아래처럼 사용..
+		System.out.println(System.identityHashCode(str));
+		
+		String[] strArr = {"사과", "바나나", "딸기"};
+		// 메모리 구조가 어떻게 생겼을까?
+		
+		String[] strArr2 = {"사과", "바나나", "딸기"};
+		// 확인용 String[] 선언
+		
+		System.out.println(System.identityHashCode(strArr[0]));
+		System.out.println(System.identityHashCode(strArr2[0]));
+		// 동일한 String 상수 풀에 존재함!
 	}
 }
