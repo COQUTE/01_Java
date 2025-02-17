@@ -232,4 +232,54 @@ public class ArrayExample1 {
 		// 0.0 <= x * 6 < 6.0
 		// 0 <= x < 6
 	}
+	
+	public void ex6() {
+		// 배열을 이용한 검색
+		
+		// 입력받은 정수가 배열에 있는지 없는지 확인
+		// 만약 있다면 몇번 인덱스에 존재하는지 출력
+		
+		// ex)
+		// 정수 입력 : 200
+		// 1번째 인덱스에 존재
+		
+		// 정수 입력 : 5
+		// 존재하지 않음
+		
+		
+		int[] arr = new int[10];
+		
+		int num = 100;
+		
+		// { 100, 200, ..., 1000}
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = num;
+			num += 100;
+		}
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("정수 입력 : ");
+		int input = sc.nextInt();
+		
+		// 신호를 나타내기 위한 변수
+		boolean flag = false; // 검사 전에는 없다고 가정
+		
+		for (int i = 0; i < arr.length; i++) {
+			
+			if (arr[i] == input) {
+				System.out.println(i + "번째 인덱스에 존재");
+				flag = true; // 일치하는 값이 있으므로 true로 변경
+				break;
+			}
+		}
+		
+		// flag 상태를 검사
+		// flag가 false라면 일치하는 값을 찾지 못했다라는 의미
+		// flag가 false라면 if 조건식이 false이므로 수행되지 않음
+		// -> ! (Not 연산자 : 부정 논리 연산자) 붙여줌으로써 true로 변경하여
+		// {} 안에 있는 코드를 수행하게끔 함.
+		if (!flag)
+			System.out.println("존재하지 않음");
+	}
 }
