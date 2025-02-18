@@ -113,6 +113,7 @@ public class PracticeService {
 			if (arr[i] == search) {
 				flag = true;
 				index = i;
+				break;
 			}
 		}
 		
@@ -167,9 +168,7 @@ public class PracticeService {
 		for (int i = 0; i < arr.length; i++) {
 			
 			System.out.printf("배열 %d번째 인덱스에 넣을 값 : ", i);
-			int value = sc.nextInt();
-			
-			arr[i] = value;
+			arr[i] = sc.nextInt();
 		}
 		
 		int sum = 0;
@@ -181,8 +180,7 @@ public class PracticeService {
 			sum += arr[i];
 		}
 		
-		System.out.println();
-		System.out.println("총 합 : " + sum);
+		System.out.println("\n총 합 : " + sum);
 	}
 
 	public void practice7() {
@@ -192,31 +190,27 @@ public class PracticeService {
 		System.out.print("주민등록번호(-포함) : ");
 		String id = sc.nextLine();
 		
-		char[] idArr = new char[id.length()];
+		char[] idCharArr = new char[id.length()];
 		
-		for (int i = 0; i < idArr.length; i++) {
+		int index = 0;
+		
+		for (int i = 0; i < idCharArr.length; i++) {
 			
-			idArr[i] = id.charAt(i);
+			idCharArr[i] = id.charAt(i);
+			
+			if (idCharArr[i] == '-') {
+				index = i;
+			}
 		}
 		
-		boolean flag = false;
-		
-		for (int i = 0; i < idArr.length; i++) {
+		for (int i = index + 2; i < idCharArr.length; i++) {
 			
-			if (flag) {
-				idArr[i] = '*';
-			}
-			
-			if (id.charAt(i) == '-') {
-				
-				flag = true;
-				i++;
-			}
+			idCharArr[i] = '*';
 		}
 
-		for (int i = 0; i < idArr.length; i++) {
+		for (int i = 0; i < idCharArr.length; i++) {
 			
-			System.out.print(idArr[i]);
+			System.out.print(idCharArr[i]);
 		}
 		
 		System.out.println();
@@ -229,7 +223,6 @@ public class PracticeService {
 		 * 단, 입력한 정수가 홀수가 아니거나 3 미만일 경우 “다시 입력하세요”를 출력하고
 		 * 다시 정수를 받도록 하세요.
 		 */
-		
 		
 		System.out.print("정수 : ");
 		int input = sc.nextInt();
@@ -246,22 +239,23 @@ public class PracticeService {
 		int num = 0;
 		for (int i = 0; i < arr.length; i++) {
 			
-			if (i <= arr.length / 2) {
+			if (i <= arr.length / 2)
 				num++;
-				arr[i] = num;
-			} else {
+			else
 				num--;
-				arr[i] = num;
-			}
+			
+			arr[i] = num;
 		}
 		
 		for (int i = 0; i < arr.length; i++) {
 			
-			if (i < arr.length - 1)
-				System.out.print(arr[i] + ", ");
+			if (i == 0)
+				System.out.print(arr[i]);
 			else
-				System.out.println(arr[i]);
+				System.out.print(", " + arr[i]);
 		}
+		
+		System.out.println();
 	}
 
 	public void practice9() {
@@ -274,8 +268,7 @@ public class PracticeService {
 		
 		for (int i = 0; i < arr.length; i++) {
 			
-			int random = (int)(Math.random() * 10 + 1);	
-			arr[i] = random;
+			arr[i] = (int)(Math.random() * 10 + 1);
 		}
 		
 		for (int i = 0; i < arr.length; i++) {
@@ -293,13 +286,14 @@ public class PracticeService {
 		int[] arr = new int[10];
 		
 		for (int i = 0; i < arr.length; i++) {
-			
-			int random = (int)(Math.random() * 10 + 1);	
-			arr[i] = random;
+				
+			arr[i] = (int)(Math.random() * 10 + 1);
 		}
 		
+		System.out.print("발생한 난수 :");
+		
 		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
+			System.out.print(" " + arr[i]);
 		}
 		System.out.println();
 		
@@ -328,12 +322,11 @@ public class PracticeService {
 		
 		for (int i = 0; i < arr.length; i++) {
 			
-			int random = (int)(Math.random() * 10 + 1);
-			arr[i] = random;
+			arr[i] = (int)(Math.random() * 10 + 1);
 			
 			for (int j = 0; j < i; j++) {
 				
-				if (arr[j] == random) {
+				if (arr[j] == arr[i]) {
 					i--;
 					break;
 				}
@@ -355,12 +348,11 @@ public class PracticeService {
 		
 		for (int i = 0; i < arr.length; i++) {
 			
-			int random = (int)(Math.random() * 10 + 1);
-			arr[i] = random;
+			arr[i] = (int)(Math.random() * 10 + 1);
 			
 			for (int j = 0; j < i; j++) {
 				
-				if (arr[j] == random) {
+				if (arr[j] == arr[i]) {
 					i--;
 					break;
 				}
@@ -384,9 +376,9 @@ public class PracticeService {
 		String str = sc.nextLine();
 		
 		char[] arr = new char[str.length()];
-		int arrIndex = 0;
 		
 		boolean isDup = false;
+		int arrIndex = 0;
 		int dupCount = 0;
 		
 		// 문자열의 중복 체크 & 중복인 인덱스를 생략하고 arr에 대입
