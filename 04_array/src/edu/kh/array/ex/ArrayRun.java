@@ -13,6 +13,12 @@ public class ArrayRun {
 //		arrayEx.ex6();
 //		arrayEx.ex7();
 //		arrayEx.ex8();
-		arrayEx.ex9();
+//		arrayEx.ex9();
+		
+		ArrayExample2 arrayEx2 = new ArrayExample2();
+		
+//		arrayEx2.shallowCopy();
+//		arrayEx2.deepCopy();
+		arrayEx2.createLottoNumber();
 	}
 }
