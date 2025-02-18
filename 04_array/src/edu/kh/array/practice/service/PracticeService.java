@@ -131,17 +131,24 @@ public class PracticeService {
 		 */
 		
 		System.out.print("문자열 : ");
-		String input = sc.nextLine();
+		String str = sc.nextLine();
+		
+		char[] charArr = new char[str.length()];
+		
+		for (int i = 0; i < charArr.length; i++) {
+			
+			charArr[i] = str.charAt(i);
+		}
 		
 		System.out.print("문자 : ");
 		char search = sc.next().charAt(0);
 		
-		System.out.printf("%s에 %c가 존재하는 위치(인덱스) :", input, search);
+		System.out.printf("%s에 %c가 존재하는 위치(인덱스) :", str, search);
 		
 		int count = 0;
-		for (int i = 0; i < input.length(); i++) {
+		for (int i = 0; i < charArr.length; i++) {
 			
-			if (input.charAt(i) == search) {
+			if (charArr[i] == search) {
 				
 				System.out.print(" " + i);
 				count++;
@@ -442,25 +449,33 @@ public class PracticeService {
 		
 		while (true) {
 			System.out.print("더 값을 입력하시겠습니까?(Y/N) : ");
-			if (sc.next().charAt(0) == 'n')
-				break;
+			char ch = sc.next().charAt(0);
 			
-			System.out.print("더 입력하고 싶은 개수 : ");
-			int plus = sc.nextInt();
-			
-			sc.nextLine();
-			
-			String[] newArr = new String[arr.length + plus];
-			
-			System.arraycopy(arr, 0, newArr, 0, arr.length);
-			
-			for (int i = arr.length; i < newArr.length; i++) {
+			if (ch == 'y' || ch == 'Y') {
 				
-				System.out.print((i + 1) + "번째 문자열 : ");
-				newArr[i] = sc.nextLine();
+				System.out.print("더 입력하고 싶은 개수 : ");
+				int addSize = sc.nextInt();
+				
+				sc.nextLine();
+				
+				String[] newArr = new String[arr.length + addSize];
+				
+				System.arraycopy(arr, 0, newArr, 0, arr.length);
+				
+				for (int i = arr.length; i < newArr.length; i++) {
+					
+					System.out.print((i + 1) + "번째 문자열 : ");
+					newArr[i] = sc.nextLine();
+				}
+				
+				arr = newArr;
+				
+			} else if (ch == 'n' || ch == 'N') {
+				break;
+				
+			} else {
+				System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
 			}
-			
-			arr = newArr;
 		}
 		
 		System.out.println(Arrays.toString(arr));
