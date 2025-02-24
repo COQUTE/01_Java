@@ -13,13 +13,15 @@ public class Run {
 		 * 출력하고 총 직원 연봉의 평균을 구하여 출력
 		 */
 		
-		// 객체배열을 크기 3으로 할당한 뒤 3개의 생성자를 각각 이용하여 객체 생성 후 출력
+		// 객체배열을 크기 3으로 할당
 		Employee[] employeeArr = new Employee[3];
 		
-		employeeArr[0] = new Employee();
+		// 할당한 뒤 3개의 생성자를 이용하여 각각 생성
+		employeeArr[0] = new Employee(); // 기본 생성자
 		employeeArr[1] = new Employee(1, "홍길동", 19, 'M', "01022223333", "서울 잠실");	
 		employeeArr[2] = new Employee(2, "강말순", "교육부", "강사", 20, 'F', 1000000, 0.01, "01011112222", "서울 마곡");
 		
+		// 생성한 후 출력
 		for (int i = 0; i < employeeArr.length; i++) {
 			
 			System.out.printf("emp[%d] : ", i);
@@ -29,7 +31,6 @@ public class Run {
 		System.out.println("==============================================================================");
 		
 		// 3개의 객체 중 값이 없는 필드에 각각 값을 넣은 뒤 출력
-		
 		employeeArr[0].setEmpNo(0);
 		employeeArr[0].setEmpName("김말똥");
 		employeeArr[0].setDept("영업부");
@@ -43,12 +44,8 @@ public class Run {
 		
 		employeeArr[1].setDept("기획부");
 		employeeArr[1].setJob("부장");
-		employeeArr[1].setAge(19);
-		employeeArr[1].setGender('M');
 		employeeArr[1].setSalary(4000000);
 		employeeArr[1].setBonusPoint(0.3);
-		employeeArr[1].setPhone("01022223333");
-		employeeArr[1].setAddress("서울 잠실");
 		
 		for (int i = 0; i < employeeArr.length - 1; i++) {
 			
@@ -61,7 +58,7 @@ public class Run {
 		// 직원 각각의 보너스가 적용된 1년 연봉을 계산하여 출력
 		// 연봉 = (급여 + (급여 * 보너스포인트)) * 12
 		
-		int sum = 0;
+		int sum = 0; // 3명의 연봉을 누적해줄 변수
 		
 		for (int i = 0; i < employeeArr.length; i++) {
 			
