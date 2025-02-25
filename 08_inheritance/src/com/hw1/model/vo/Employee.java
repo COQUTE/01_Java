@@ -32,7 +32,7 @@ public class Employee extends Person {
 
 	@Override
 	public String information() {
-		return String.format(super.information() + 
-				" / 급여 : %d / 부서 : %s", salary, dept);
+		return super.information() + 
+				String.format(" / 급여 : %d / 부서 : %s", salary, dept);
 	}
 }

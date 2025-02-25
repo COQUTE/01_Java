@@ -32,7 +32,7 @@ public class Student extends Person {
 
 	@Override
 	public String information() {
-		return String.format(super.information() + 
-				" / 학년 : %d / 전공 : %s", grade, major);
+		return super.information() + 
+				String.format(" / 학년 : %d / 전공 : %s", grade, major);
 	}
 }
