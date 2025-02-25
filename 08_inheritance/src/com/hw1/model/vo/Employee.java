@@ -9,7 +9,7 @@ public class Employee extends Person {
 
 	public Employee(String name, int age, double height, double weight, int salary, String dept) {
 		super(age, height, weight);
-		setName(name);
+		this.name = name; // 부모 Person에 작성된 필드 중 protected 접근 제한자 name
 		this.salary = salary;
 		this.dept = dept;
 	}
@@ -32,7 +32,7 @@ public class Employee extends Person {
 
 	@Override
 	public String information() {
-		return super.information() + 
-				" / 급여 : " + salary + " / 부서 : " + dept;
+		return String.format(super.information() + 
+				" / 급여 : %d / 부서 : %s", salary, dept);
 	}
 }
