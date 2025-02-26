@@ -29,8 +29,7 @@ public class Prison implements ManagementSystem {
 		
 		prisoners[prisonerCount] = (Prisoner)person;
 			
-		System.out.print("수감자가 추가되었습니다 - ");
-		System.out.println(prisoners[prisonerCount].getInfo());
+		System.out.println("수감자가 추가되었습니다 - " + prisoners[prisonerCount].getInfo());
 		
 		prisonerCount++;
 	}
@@ -38,14 +37,11 @@ public class Prison implements ManagementSystem {
 	@Override
 	public void removePerson(String id) {
 		
-		boolean searchFlag = true;
-		
 		for (int i = 0; i < prisonerCount; i++) {
 			
 			if (prisoners[i].getId().equals(id)) { // 아이디가 같은 수감자를 찾은 경우
 				
-				System.out.print("수감자가 삭제되었습니다 - ");
-				System.out.println(prisoners[i].getInfo());
+				System.out.println("수감자가 삭제되었습니다 - " + prisoners[i].getInfo());
 				
 				// 마지막 인덱스에 도착하거나 다음이 비어있는 경우(다음이 null인 경우)가 아니라면
 				// 계속 당겨오게 설계
@@ -55,9 +51,7 @@ public class Prison implements ManagementSystem {
 						
 						prisonerCount--;
 						
-						searchFlag = false;
-						
-						break;
+						return;
 					}
 					
 					prisoners[i] = prisoners[i + 1];
@@ -67,8 +61,7 @@ public class Prison implements ManagementSystem {
 			}
 		}
 		
-		if (searchFlag)
-			System.out.println("해당 id를 가진 수감자를 찾을 수 없습니다.");
+		System.out.println("ID : " + id + "인 수감자를 찾을 수 없습니다.");
 		
 	}
 
@@ -77,12 +70,9 @@ public class Prison implements ManagementSystem {
 		
 		System.out.println("전체 수감자 명단 :");
 		
-		for (Prisoner pri : prisoners) {
+		for (int i = 0; i < prisonerCount; i++) {
 			
-			if (pri == null)
-				break;
-			
-			System.out.println(pri.getInfo());
+			System.out.println(prisoners[i].getInfo());
 		}
 	}
 	

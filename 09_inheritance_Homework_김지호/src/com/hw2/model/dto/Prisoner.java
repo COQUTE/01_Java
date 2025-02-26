@@ -22,7 +22,7 @@ public class Prisoner extends Person {
 	@Override
 	public String getInfo() {
 		
-		return String.format("ID : %s , 이름 : %s , 죄명 : %s", getId(), getName(), crime);
+		return String.format("ID : %s , 이름 : %s , 죄명 : %s", id, name, crime);
 	}
 	
 	

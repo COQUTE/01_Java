@@ -21,7 +21,8 @@ public class Employee extends Person {
 
 	@Override
 	public String getInfo() {
-		return String.format("ID : %s , 이름 : %s, 직책 : %s", getId(), getName(), position);
+		
+		return String.format("ID : %s , 이름 : %s, 직책 : %s", id, name, position);
 	}
 
 }

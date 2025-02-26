@@ -36,8 +36,7 @@ public class Company implements ManagementSystem {
 		
 		employees[employeeCount] = (Employee)person;
 			
-		System.out.print("직원이 추가되었습니다 - ");
-		System.out.println(employees[employeeCount].getInfo());
+		System.out.println("직원이 추가되었습니다 - " + employees[employeeCount].getInfo());
 		
 		employeeCount++;
 			
@@ -52,14 +51,11 @@ public class Company implements ManagementSystem {
 	@Override
 	public void removePerson(String id) {
 		
-		boolean searchFlag = true;
-		
 		for (int i = 0; i < employeeCount; i++) {
 			
 			if (employees[i].getId().equals(id)) { // 아이디가 같은 직원을 찾은 경우
 				
-				System.out.print("직원이 삭제되었습니다 - ");
-				System.out.println(employees[i].getInfo());
+				System.out.println("직원이 삭제되었습니다 - " + employees[i].getInfo());
 				
 				// 마지막 인덱스에 도착하거나 다음이 비어있는 경우(다음이 null인 경우)가 아니라면
 				// 계속 당겨오게 설계
@@ -69,9 +65,7 @@ public class Company implements ManagementSystem {
 						
 						employeeCount--;
 						
-						searchFlag = false;
-						
-						break;
+						return;
 					}
 					
 					employees[i] = employees[i + 1];
@@ -81,8 +75,7 @@ public class Company implements ManagementSystem {
 			}
 		}
 		
-		if (searchFlag)
-			System.out.println("해당 id를 가진 직원을 찾을 수 없습니다.");
+		System.out.println("ID : " + id + "인 직원을 찾을 수 없습니다.");
 		
 	}
 
@@ -95,12 +88,9 @@ public class Company implements ManagementSystem {
 		
 		System.out.println("전체 직원 명단 :");
 		
-		for (Employee emp : employees) {
+		for (int i = 0; i < employeeCount; i++) {
 			
-			if (emp == null)
-				break;
-			
-			System.out.println(emp.getInfo());
+			System.out.println(employees[i].getInfo());
 		}
 	}
 	
