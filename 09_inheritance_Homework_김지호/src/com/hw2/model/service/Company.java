@@ -29,7 +29,6 @@ public class Company implements ManagementSystem {
 	public void addPerson(Person person) {
 			
 		if (employeeCount == employees.length) {
-			// 빈 공간을 못 찾은 경우 for문을 모두 돌고 나옴
 			System.out.println("인원이 모두 충원되었습니다.");
 		}
 		
@@ -60,10 +59,8 @@ public class Company implements ManagementSystem {
 				System.out.print("직원이 삭제되었습니다 - ");
 				System.out.println(employees[i].getInfo());
 				
-				// 1. 가장 먼저 배열의 뒤의 배열 값을 당겨옴
-				// 2. 뒤에 배열의 참조값이 null인 경우까지 계속 당겨오게 됨
-				// 3. while문을 활용해서 null이 아닌 경우는 계속 당겨오고
-				// 4. 마지막 인덱스에 도착하거나 다음이 비어있는 경우(다음이 null인 경우)에 멈추게 설계
+				// 마지막 인덱스에 도착하거나 다음이 비어있는 경우(다음이 null인 경우)가 아니라면
+				// 계속 당겨오게 설계
 				while (true) {
 					if (i + 1 == employeeCount || employees[i + 1] == null) {
 						employees[i] = null;
