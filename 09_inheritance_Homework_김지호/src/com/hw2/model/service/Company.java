@@ -30,6 +30,8 @@ public class Company implements ManagementSystem {
 			
 		if (employeeCount == employees.length) {
 			System.out.println("인원이 모두 충원되었습니다.");
+			
+			return;
 		}
 		
 		employees[employeeCount] = (Employee)person;
