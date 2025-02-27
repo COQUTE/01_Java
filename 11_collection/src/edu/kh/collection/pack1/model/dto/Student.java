@@ -1,6 +1,6 @@
 package edu.kh.collection.pack1.model.dto;
 
-public class Student {
+public class Student implements Comparable<Student> {
 
 	// 속성
 	private String name;	// 이름
@@ -63,5 +63,18 @@ public class Student {
 	public String toString() {
 		return "Student [name=" + name + ", age=" + age + ", region=" + region + ", gender=" + gender + ", score="
 				+ score + "]";
+	}
+
+	@Override
+	public int compareTo(Student o) {
+		
+		if(age > o.age)
+			return 1;
+		
+		else if(age == o.age)
+			return 0;
+		
+		else
+			return -1;
 	}
 }

@@ -1,11 +1,13 @@
 package edu.kh.collection.pack1.model.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 import edu.kh.collection.pack1.model.dto.Student;
+import edu.kh.collection.pack1.model.sort.StudentComparator;
 
 public class StudentService {
 
@@ -333,10 +335,10 @@ public class StudentService {
 	}
 	
 	public void sortByAge() {
-		
+		Collections.sort(studentList);
 	}
 	
 	public void sortByName() {
-		
+		Collections.sort(studentList, new StudentComparator());
 	}
 }
