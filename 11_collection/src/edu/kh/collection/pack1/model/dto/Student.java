@@ -66,12 +66,20 @@ public class Student implements Comparable<Student> {
 	}
 
 	@Override
-	public int compareTo(Student o) {
+	public int compareTo(Student other) {
+		// comparTo() : 두 객체를 비교하고 순서를 결정.
+		// 반환값 : 0(같음), 양수(왼쪽 객체가 큼), 음수(왼쪽 객체가 작음)
 		
-		if(age > o.age)
+		// 현재객체의 나이 - 다른객체의 나이
+		// -> 값이 양수면 현재객체의 나이가 더 크다
+		// -> 값이 음수면 현재객체의 나이가 더 적다
+		// return this.age - other.age; // 나이를 기준으로 오름차순 정렬 (작 -> 큰)
+		// return other.age - this.age; // 나이를 기준으로 내림차순 정렬 (큰 -> 작)
+		
+		if(this.age > other.age)
 			return 1;
 		
-		else if(age == o.age)
+		else if(this.age == other.age)
 			return 0;
 		
 		else
