@@ -2,6 +2,7 @@ package com.hw1.run;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.hw1.model.dto.Friend;
 
@@ -20,9 +21,10 @@ public class Run {
 		friendList.add(new Friend("맹구"));
 		
 		// List에서 다섯객체 중 랜덤으로 하나를 뽑아 골목대장이 누군지 출력하기
-		int randomIndex = (int)(Math.random() * 4);
+//		int randomIndex = (int)(Math.random() * 4);
+		Random random = new Random();
 		
-		System.out.println(friendList.get(randomIndex).getName() + "가 떡잎방범대 대장이다!");
+		friendList.get(random.nextInt(friendList.size())).pickLeader(); 
 	}
 
 }

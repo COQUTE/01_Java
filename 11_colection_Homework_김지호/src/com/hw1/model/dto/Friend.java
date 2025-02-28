@@ -20,6 +20,7 @@ public class Friend {
 
 	public void pickLeader() {
 		
+		System.out.println(name + "가 떡잎방범대 대장이다!");
 	}
 	
 }
