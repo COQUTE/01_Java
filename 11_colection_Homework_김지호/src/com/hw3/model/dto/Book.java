@@ -72,7 +72,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return id + "번 도서 : [도서제목 : " + name + "/ 도서저자 : " + author + "/ 도서가격 : " + price + " / 출판사 : "
+		return id + "번 도서 : [도서제목 : " + name + " / 도서저자 : " + author + " / 도서가격 : " + price + " / 출판사 : "
 				+ publisher + "]";
 	}
 	

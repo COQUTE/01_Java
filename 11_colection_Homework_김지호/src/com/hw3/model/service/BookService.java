@@ -3,6 +3,7 @@ package com.hw3.model.service;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import com.hw3.model.dto.Book;
@@ -59,7 +60,7 @@ public class BookService {
 				case 5: add(FAVORITES); break;
 				case 6: remove(FAVORITES); break;
 				case 7: selectAll(FAVORITES); break;
-				case 8: break;
+				case 8: recommend(); break;
 				case 0: System.out.println("프로그램이 종료되었습니다."); break;
 				default: System.out.println("메뉴에 없는 번호입니다.");
 				}
@@ -91,7 +92,7 @@ public class BookService {
 			
 			case BOOK: {
 				
-				System.out.println("**********도서 추가**********");
+				System.out.println("**********도서 등록**********");
 				
 				System.out.print("도서 번호 : ");
 				int id = sc.nextInt();
@@ -121,19 +122,24 @@ public class BookService {
 			
 			case FAVORITES: {
 				
-				System.out.println("**********즐겨찾기 추가**********");
+				System.out.println("**********즐겨찾기 등록**********");
 				System.out.print("추가하고 싶은 도서 번호를 입력하세요: ");
 				// 도서 번호를 입력하면
 				// 일치하는 도서 번호를 가진 Book 객체를
 				// 즐겨찾기 리스트에 추가
 				int id = sc.nextInt();
+				sc.nextLine();
 				
-				for(int i = 0; i < bookList.size(); i++) {
+				for(Book book : bookList) {
 					
-					if (bookList.get(i).getId() == id) {
-						favoritesList.add(bookList.get(i)); // 얕은 복사
+					if (book.getId() == id) {
+						// 얕은 복사
+						if (favoritesList.add(book)) {
+							System.out.println("등록 완료");
+						} else {
+							System.out.println("등록 실패");
+						}
 						
-						System.out.println("즐겨찾기에 추가했습니다.");
 						return;
 					}
 				}
@@ -198,6 +204,7 @@ public class BookService {
 		
 		// 도서명 수정
 		case 1: {
+			System.out.println("=====도서명 수정=====");
 			System.out.print("수정할 이름을 입력하세요: ");
 			
 			book.setName(sc.nextLine());
@@ -206,6 +213,7 @@ public class BookService {
 		
 		// 도서 저자 수정
 		case 2: {
+			System.out.println("=====저자명 수정=====");
 			System.out.print("수정할 저자명을 입력하세요: ");
 			
 			book.setAuthor(sc.nextLine());
@@ -214,6 +222,7 @@ public class BookService {
 		
 		// 도서 가격 수정
 		case 3: {
+			System.out.println("=====가격 수정=====");
 			System.out.print("수정할 가격을 입력하세요: ");
 			
 			book.setPrice(sc.nextInt());
@@ -223,6 +232,7 @@ public class BookService {
 		
 		// 도서 출판사 수정
 		case 4: {
+			System.out.println("=====출판사 수정=====");
 			System.out.print("수정할 출판사를 입력하세요: ");
 			
 			book.setPublisher(sc.nextLine());
@@ -230,12 +240,18 @@ public class BookService {
 		break;
 		
 		// 수정 종료
-		case 0: System.out.println("수정 종료");
+		case 0: System.out.println("수정 종료"); return;
+		
+		default: System.out.println("메뉴에 없는 번호입니다.");
 		}
 		
 	}
 	
 	public void update() {
+		
+		if(bookList.isEmpty()) {
+			throw new NullPointerException();
+		}
 		
 		System.out.println("**********도서 수정**********");
 		System.out.print("수정할 도서 번호를 입력하세요 : ");
@@ -248,16 +264,15 @@ public class BookService {
 			
 			// 입력한 id와 동일한 id를 가진 Book 객체가 있는지 확인
 			// 있으면 계속 진행, 없으면 해당 번호를 가진 책이 없습니다.
-			for(int i = 0; i < bookList.size(); i++) {
+			for(Book book : bookList) {
 				
-				if (bookList.get(i).getId() == id) {
+				if(book.getId() == id) {
 					
-					updateBook = bookList.get(i);
+					updateBook = book;
 					isFound = true;
 					break;
 				}
 			}
-			System.out.println("해당 번호를 가진 책이 없습니다.");
 			
 			if (isFound) {
 				System.out.println("1. 도서명");
@@ -266,19 +281,9 @@ public class BookService {
 				System.out.println("4. 도서 출판사");
 				System.out.println("0. 수정 종료");
 				
-				System.out.println("어떤 정보를 수정하시겠습니까?");
+				System.out.print("어떤 정보를 수정하시겠습니까?");
 				int menuNum = sc.nextInt();
-				
-				String result = null;
-				switch(menuNum) {
-				
-				case 1: result = "도서명"; break;
-				case 2: result = "도서 저자"; break;
-				case 3: result = "도서 가격"; break;
-				case 4: result = "수정 종료"; break;
-				}
-				
-				System.out.println("=====" + result + " 수정=====");
+				sc.nextLine();
 				
 				updateList(menuNum, updateBook);
 				
@@ -295,11 +300,15 @@ public class BookService {
 	
 	public void removeHasSameId(int id, List<Book> list) {
 		
-		for(int i = 0; i < list.size(); i++) {
+		for(Book book : list) {
 			
-			if (list.get(i).getId() == id) {
+			if (book.getId() == id) {
 				
-				list.remove(i);
+				if(list.remove(book)) {
+					System.out.println("삭제 성공");
+				} else {
+					System.out.println("삭제 실패");
+				}
 				return;
 			}
 		}
@@ -317,10 +326,15 @@ public class BookService {
 			
 			case BOOK: {
 				
+				if(bookList.isEmpty()) {
+					throw new NullPointerException();
+				}
+				
 				System.out.println("**********도서 삭제**********");
 				System.out.print("삭제할 도서 번호를 입력하세요 : ");
 				
 				int id = sc.nextInt();
+				sc.nextLine();
 				
 				removeHasSameId(id, bookList);
 				
@@ -329,10 +343,15 @@ public class BookService {
 			
 			case FAVORITES: {
 				
+				if(favoritesList.isEmpty()) {
+					throw new NullPointerException();
+				}
+				
 				System.out.println("********즐겨찾기 삭제********");
 				System.out.print("삭제할 즐겨찾기 번호를 입력하세요 : ");
 
 				int id = sc.nextInt();
+				sc.nextLine();
 				
 				removeHasSameId(id, favoritesList);
 				
@@ -344,6 +363,21 @@ public class BookService {
 			}
 		} catch(InputMismatchException e) {
 			throw e;
+		} catch(NullPointerException e) {
+			throw e;
+		}
+		
+	}
+	
+	public void recommend() {
+		
+		Random random = new Random();
+		
+		System.out.println("**********추천 도서**********");
+		
+		try {
+			System.out.println(bookList.get(random.nextInt(bookList.size())));
+			
 		} catch(NullPointerException e) {
 			throw e;
 		}
