@@ -72,9 +72,6 @@ public class BookService {
 				menuNum = -1;
 			} catch(NullPointerException e) {
 				System.out.println("리스트가 비어있습니다.");
-				sc.nextLine(); // 버퍼 비워주기
-				
-				menuNum = -1;
 			}
 			
 		} while(menuNum != 0);
