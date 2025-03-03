@@ -1,5 +1,7 @@
 package com.hw.run;
 
+import com.hw.model.service.ToyFactory;
+
 /* 이 프로젝트는 ToyFactory을 모델링하고 그 공장에서의 장난감 관리를 자동화하는 Java 어플리케이션입니다.
  * 1. 장난감의 정보를 효과적으로 관리하고 출력할 수 있는 클래스를 구현.
  * 2. 사용자로부터 입력을 받고, 입력에 따라 적절한 동작을 수행하는 메서드를 작성
@@ -11,6 +13,9 @@ public class Run {
 
 	public static void main(String[] args) {
 
+		ToyFactory service = new ToyFactory();
+		
+		service.displayMenu();
 	}
 
 }

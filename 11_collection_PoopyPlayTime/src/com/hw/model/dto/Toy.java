@@ -1,8 +1,6 @@
 package com.hw.model.dto;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 // 장난감의 정보를 저장하고 관리하는 데이터 전송 객체(DTO)입니다.
@@ -38,14 +36,25 @@ public class Toy {
 	// 사용재료 Set
 	private Set<String> usedMaterial; // 재료 Map에서 꺼내온 재료명으로 이루어진 사용재료 Set
 	
-	public Toy() {}
+	public Toy() {
+		usedMaterial = new HashSet<String>();
+	}
 
-	public Toy(String name, int age, int price, String color, String date) {
+	// 장난감을 만들 때, 사용된 재료들을 Set으로 저장 (중복 사용된 재료가 없게 하기 위함)
+	// 그럼 처음 장난감 객체를 만들 때, 어떻게 초기화 하는 게 좋을까?
+	// String 값을 넣어주면 바로 Set 안에 저장할 수 있게 하기 (가변인자 String... 사용)
+	public Toy(String name, int age, int price, String color, String date, String... strings) {
 		this.name = name;
 		this.age = age;
 		this.price = price;
 		this.color = color;
 		this.date = date;
+		
+		usedMaterial = new HashSet<String>();
+		
+		for(String str : strings) {
+			usedMaterial.add(str);
+		}
 	}
 
 	public String getName() {
@@ -94,6 +103,17 @@ public class Toy {
 
 	public void setUsedMaterial(Set<String> usedMaterial) {
 		this.usedMaterial = usedMaterial;
+	}
+
+	@Override
+	public String toString() {
+		String result = String.format("이름 : %s / 가격 : %d / 색상 : %s / 사용가능연령 : %d / 제조년월일 : %s / 재료 : ", name, price, color, age, date);
+		
+		for(String material : usedMaterial) {
+			result += material;
+		}
+		
+		return result;
 	}
 
 	
