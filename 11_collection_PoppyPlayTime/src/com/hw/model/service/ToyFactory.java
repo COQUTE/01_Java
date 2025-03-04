@@ -118,17 +118,18 @@ public class ToyFactory {
 	
 	public void selectAll() {
 		
+		if(toySet.isEmpty()) {
+			System.out.println("장난감 목록이 비어있습니다.");
+			return;
+		}
+
 		System.out.println("\n<전체 장난감 목록>");
 		
-		try {
-			int num = 1;
+		int num = 1;
+		
+		for(Toy toy : toySet)
+			System.out.println(num++ + ". " + toy);
 			
-			for(Toy toy : toySet)
-				System.out.println(num++ + ". " + toy);
-			
-		} catch(NullPointerException e) {
-			System.out.println("조회할 장난감이 없습니다.");
-		}
 	}
 	
 	public void createToy() {
@@ -193,6 +194,11 @@ public class ToyFactory {
 	public void deleteToy() {
 		// Unchecked Exception인 InputMismatchException은 자동으로 throws 됨
 		
+		if(toySet.isEmpty()) {
+			System.out.println("장난감 목록이 비어있습니다.");
+			return;
+		}
+		
 		System.out.print("삭제할 장난감의 이름을 입력하세요: ");
 		String toyName = sc.next();
 		
@@ -212,6 +218,11 @@ public class ToyFactory {
 	}
 	
 	public void selectByDate() {
+		
+		if(toySet.isEmpty()) {
+			System.out.println("장난감 목록이 비어있습니다.");
+			return;
+		}
 		
 		System.out.println("\n<제조일 순으로 장난감을 정렬>");
 		
@@ -241,6 +252,11 @@ public class ToyFactory {
 	}
 	
 	public void selectByAge() {
+		
+		if(toySet.isEmpty()) {
+			System.out.println("장난감 목록이 비어있습니다.");
+			return;
+		}
 		
 		System.out.println("\n<연령별로 사용 가능한 장난감>");
 		
@@ -292,6 +308,11 @@ public class ToyFactory {
 	
 	public void addMaterials() {
 		
+		if(materialMap.isEmpty()) {
+			System.out.println("등록된 재료가 없습니다.");
+			return;
+		}
+		
 		System.out.println("\n<재료 추가>");
 		
 		showMaterials();
@@ -330,6 +351,11 @@ public class ToyFactory {
 	}
 	
 	public void deleteMaterial() {
+		
+		if(materialMap.isEmpty()) {
+			System.out.println("등록된 재료가 없습니다.");
+			return;
+		}
 		
 		System.out.println("\n<재료 삭제>");
 		
