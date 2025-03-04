@@ -308,11 +308,6 @@ public class ToyFactory {
 	
 	public void addMaterials() {
 		
-		if(materialMap.isEmpty()) {
-			System.out.println("등록된 재료가 없습니다.");
-			return;
-		}
-		
 		System.out.println("\n<재료 추가>");
 		
 		showMaterials();
