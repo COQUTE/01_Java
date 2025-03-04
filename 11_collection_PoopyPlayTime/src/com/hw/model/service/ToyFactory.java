@@ -176,13 +176,18 @@ public class ToyFactory {
 					break; // 다음으로 진행
 			}
 			
-			if(materialMap.containsValue(material))
+			if(materialMap.containsValue(material)) {
 				materialSet.add(material);
-			else
+					
+			} else
 				System.out.println("존재하지 않는 재료입니다.");
 		}while(!material.equalsIgnoreCase("q"));
 		
-		toySet.add(new Toy(name, age, price, color, date, materialSet));
+		if(toySet.add(new Toy(name, age, price, color, date, materialSet))) {
+			System.out.println("새로운 장난감이 추가되었습니다.");
+		} else {
+			System.out.println("추가 실패");
+		}
 	}
 	
 	public void deleteToy() {
