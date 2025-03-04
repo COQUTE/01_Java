@@ -118,8 +118,14 @@ public class Toy {
 	public String toString() {
 		String result = String.format("이름 : %s / 가격 : %d / 색상 : %s / 사용가능연령 : %d / 제조년월일 : %s / 재료 : ", name, price, color, age, date);
 		
+		int index = 0;
 		for(String material : usedMaterial) {
-			result += material + " ";
+			if(index == usedMaterial.size() - 1)
+				result += material;
+			else
+				result += material + ", ";
+			
+			index++;
 		}
 		
 		return result;
