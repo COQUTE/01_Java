@@ -21,32 +21,31 @@ public class ToyFactory {
 	 * 7. 재료 제거: 등록된 재료를 삭제하고, 해당하는 재료를 사용하는 장난감에서 제거
 	 */
 
-	private Scanner sc;
+	private Scanner sc =new Scanner(System.in);
 	
 	// 장난감 목록 Set
 	private Set<Toy> toySet;
 	
 	// 재료 Map
 	// Integer, String 모두 이미 hashcode(), equals() 메서드들이 오버라이딩 된 객체
-	private Map<Integer, String> material; // 고유번호와 재료명으로 이루어진 재료
+	private Map<Integer, String> materialMap; // 고유번호와 재료명으로 이루어진 재료
 	
 	public ToyFactory() {
-		Scanner sc = new Scanner(System.in);
-		material = new HashMap<Integer, String>(); // 재료 Map 할당
+		materialMap = new HashMap<Integer, String>(); // 재료 Map 할당
 		
 		// 기본 등록된 재료 추가
-		material.put(1, "면직물");
-		material.put(2, "플라스틱");
-		material.put(3, "유리");
-		material.put(4, "고무");
+		materialMap.put(1, "면직물");
+		materialMap.put(2, "플라스틱");
+		materialMap.put(3, "유리");
+		materialMap.put(4, "고무");
 		
 		toySet = new HashSet<Toy>(); // 장난감 목록 Set 할당
 		
-		toySet.add(new Toy("마미롱레그", 8, 36000, "분홍색", "19950805", material.get(1), material.get(4)));
-		toySet.add(new Toy("허기워기", 5, 12000, "파란색", "19940312", material.get(1), material.get(2)));
-		toySet.add(new Toy("키시미시", 5, 15000, "분홍색", "19940505", material.get(1), material.get(2)));
-		toySet.add(new Toy("캣냅", 8, 27000, "보라색", "19960128", material.get(1), material.get(2)));
-		toySet.add(new Toy("파피", 12, 57000, "빨간색", "19931225", material.get(1), material.get(2), material.get(4)));
+		toySet.add(new Toy("마미롱레그", 8, 36000, "분홍색", "19950805", materialMap.get(1), materialMap.get(4)));
+		toySet.add(new Toy("허기워기", 5, 12000, "파란색", "19940312", materialMap.get(1), materialMap.get(2)));
+		toySet.add(new Toy("키시미시", 5, 15000, "분홍색", "19940505", materialMap.get(1), materialMap.get(2)));
+		toySet.add(new Toy("캣냅", 8, 27000, "보라색", "19960128", materialMap.get(1), materialMap.get(2)));
+		toySet.add(new Toy("파피", 12, 57000, "빨간색", "19931225", materialMap.get(1), materialMap.get(2), materialMap.get(4)));
 		
 	}
 	
@@ -145,6 +144,18 @@ public class ToyFactory {
 		System.out.print("제조일 (YYYYMMDD 형식으로 입력) : ");
 		String date = sc.next();
 		
+		HashSet<String> materialSet = new HashSet<String>();
 		
+		String input = "q";
+		do {
+			System.out.print("재료를 입력하세요 (종료하려면 'q'를 입력하세요) : ");
+			String material = sc.next();
+			
+			if(materialMap.containsValue(material))
+				materialSet.add(material);
+			
+		} while(!input.equalsIgnoreCase("q"));
+		
+		toySet.add(new Toy(name, age, price, color, date, materialSet));
 	}
 }

@@ -1,5 +1,6 @@
 package com.hw.model.dto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,18 +44,28 @@ public class Toy {
 	// 장난감을 만들 때, 사용된 재료들을 Set으로 저장 (중복 사용된 재료가 없게 하기 위함)
 	// 그럼 처음 장난감 객체를 만들 때, 어떻게 초기화 하는 게 좋을까?
 	// String 값을 넣어주면 바로 Set 안에 저장할 수 있게 하기 (가변인자 String... 사용)
-	public Toy(String name, int age, int price, String color, String date, String... strings) {
+	public Toy(String name, int age, int price, String color, String date) {
 		this.name = name;
 		this.age = age;
 		this.price = price;
 		this.color = color;
 		this.date = date;
+	}
+
+	public Toy(String name, int age, int price, String color, String date, String... strings) {
+		this(name, age, price, color, date);
 		
 		usedMaterial = new HashSet<String>();
 		
 		for(String str : strings) {
 			usedMaterial.add(str);
 		}
+	}
+	
+	public Toy(String name, int age, int price, String color, String date, HashSet<String> materialSet) {
+		this(name, age, price, color, date);
+		
+		usedMaterial = materialSet;
 	}
 
 	public String getName() {
@@ -115,6 +126,5 @@ public class Toy {
 		
 		return result;
 	}
-
 	
 }
