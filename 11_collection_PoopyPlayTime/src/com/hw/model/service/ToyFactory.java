@@ -317,10 +317,10 @@ public class ToyFactory {
 				
 		}
 		
-		// Y를 입력했을 경우에만 실행되는 코드
-		if(materialMap.put(key, name) == null) // key값이 이미 매핑 되어있는 경우
+		// 중복되는 재료가 없거나, Y를 입력했을 경우에만 실행되는 코드
+		if(materialMap.put(key, name) == null) // key값이 매핑 되어있지 않은 경우
 			System.out.println("새로운 재료가 성공적으로 등록되었습니다.");
-		else
+		else // key값이 이미 매핑 되어있는 경우
 			System.out.println("재료가 성공적으로 덮어쓰기 되었습니다.");
 		
 		// 제대로 작동했는지 확인
