@@ -1,6 +1,6 @@
 package com.hw.model.dto;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -121,7 +121,7 @@ public class Toy {
 		String result = String.format("이름 : %s / 가격 : %d / 색상 : %s / 사용가능연령 : %d / 제조년월일 : %s / 재료 : ", name, price, color, age, date);
 		
 		for(String material : usedMaterial) {
-			result += material;
+			result += material + " ";
 		}
 		
 		return result;
