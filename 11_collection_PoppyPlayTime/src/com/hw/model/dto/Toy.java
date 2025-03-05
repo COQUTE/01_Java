@@ -60,7 +60,7 @@ public class Toy {
 		}
 	}
 	
-	public Toy(String name, int age, int price, String color, String date, HashSet<String> materialSet) {
+	public Toy(String name, int age, int price, String color, String date, Set<String> materialSet) {
 		this(name, age, price, color, date);
 		
 		usedMaterial = materialSet;

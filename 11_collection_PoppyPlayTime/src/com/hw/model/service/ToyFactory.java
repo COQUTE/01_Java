@@ -158,7 +158,7 @@ public class ToyFactory {
 		System.out.print("제조일 (YYYYMMDD 형식으로 입력) : ");
 		String date = sc.next();
 		
-		HashSet<String> materialSet = new HashSet<String>();
+		Set<String> materialSet = new HashSet<String>();
 		
 		String material = "q";
 		
