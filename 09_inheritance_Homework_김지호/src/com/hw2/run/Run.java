@@ -3,6 +3,7 @@ package com.hw2.run;
 import com.hw2.model.dto.Employee;
 import com.hw2.model.dto.Prisoner;
 import com.hw2.model.service.Company;
+import com.hw2.model.service.ManagementSystem;
 import com.hw2.model.service.Prison;
 
 public class Run {
@@ -11,11 +12,11 @@ public class Run {
 
 		// Company의 생성자를 이용하여 10칸 짜리 Employee 객체배열 생성하는 Company 객체를
 		// 생성하여 ManagementSystem 자료형의 company에 주소를 저장
-		Company company = new Company(10);
+		ManagementSystem company = new Company(10);
 		
 		// Prison의 생성자를 이용하여 10칸 짜리 Prisoner 객체배열 생성하는 Prison 객체를 생성하여
 		// ManagementSystem 자료형의 prison에 주소를 저장
-		Prison prison = new Prison(10);
+		ManagementSystem prison = new Prison(10);
 		
 		// 2명 정도 직원 새로 등록하기
 		company.addPerson(new Employee("EMP001", "유재석", "기획팀"));
